@@ -13,8 +13,10 @@
     h1 { color: #333; }
     
     /* Estilos para el video */
-    video { 
-      max-width: 80%; /* Hace que el video sea más grande */
+    iframe { 
+      width: 80%; /* Proporción adecuada para el video */
+      height: auto;
+      max-width: 800px; /* Limita el tamaño máximo para pantallas grandes */
       margin: 10px; 
       border-radius: 10px; 
     }
@@ -29,7 +31,7 @@
 
     /* Efecto de agrandado al pasar el ratón por encima */
     img:hover {
-      transform: scale(1.2); /* Aumenta un 20% el tamaño de la imagen */
+      transform: scale(1.3); /* Aumenta un 30% el tamaño de la imagen */
     }
 
     /* Estilo para el contenido del CV */
@@ -46,9 +48,8 @@
 
   <h2></h2>
   
-  <!-- Video primero y más grande -->
-  <iframe width="80%" height="auto" 
-          src="https://www.youtube.com/embed/1psmT_hpQ_w?rel=0&modestbranding=1" 
+  <!-- Video primero y más proporcionado -->
+  <iframe src="https://www.youtube.com/embed/1psmT_hpQ_w?rel=0&modestbranding=1" 
           frameborder="0" 
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
           allowfullscreen>
