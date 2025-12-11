@@ -5,11 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gabriel Soler Actor</title>
   <style>
-    body { font-family: Arial, sans-serif; text-align: center; margin: 20px; }
+    body { 
+      font-family: Arial, sans-serif; 
+      text-align: center; 
+      margin: 20px; 
+    }
     h1 { color: #333; }
-    img { max-width: 300px; margin: 10px; border-radius: 10px; }
-    video { max-width: 500px; margin: 10px; }
-    .cv { text-align: left; display: inline-block; margin-top: 20px; }
+    
+    /* Estilos para el video */
+    video { 
+      max-width: 80%; /* Hace que el video sea más grande */
+      margin: 10px; 
+      border-radius: 10px; 
+    }
+
+    /* Estilos para las imágenes */
+    img { 
+      max-width: 300px; /* Tamaño estándar para las imágenes */
+      margin: 10px; 
+      border-radius: 10px; 
+      transition: transform 0.3s ease; /* Transición suave */
+    }
+
+    /* Efecto de agrandado al pasar el ratón por encima */
+    img:hover {
+      transform: scale(1.2); /* Aumenta un 20% el tamaño de la imagen */
+    }
+
+    /* Estilo para el contenido del CV */
+    .cv { 
+      text-align: left; 
+      display: inline-block; 
+      margin-top: 20px; 
+    }
   </style>
 </head>
 <body>
@@ -17,20 +45,26 @@
   <p>ACTOR</p>
 
   <h2></h2>
+  
+  <!-- Video primero y más grande -->
+  <iframe width="80%" height="auto" 
+          src="https://www.youtube.com/embed/1psmT_hpQ_w?rel=0&modestbranding=1" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
+  </iframe>
+
+  <h2></h2>
+
+  <!-- Fotos -->
   <img src="Gabriel1.jpg" alt="Foto 1">
   <img src="K1B07912.jpg" alt="Foto 2">
   <img src="K1B07932.jpg" alt="Foto 3">
-  <img src="K1B07981.jpg" alt="Foto 3">
+  <img src="K1B07981.jpg" alt="Foto 4">
   
- <h2></h2>
-<iframe width="560" height="315" 
-        src="https://www.youtube.com/embed/1psmT_hpQ_w?rel=0&modestbranding=1" 
-        frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen>
-</iframe>
-
   <h2></h2>
+
+  <!-- Información adicional -->
   <div class="cv">
     <p><strong>Teatro:</strong> Obra 1, Obra 2</p>
     <p><strong>Cine:</strong> Película 1, Película 2</p>
