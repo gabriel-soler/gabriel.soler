@@ -12,13 +12,23 @@
     }
     h1 { color: #333; }
     
-    /* Estilos para el video */
-    iframe { 
-      width: 80%; /* Proporción adecuada para el video */
-      height: auto;
-      max-width: 800px; /* Limita el tamaño máximo para pantallas grandes */
-      margin: 10px; 
-      border-radius: 10px; 
+    /* Estilo para el contenedor del video (mantener proporción 16:9) */
+    .video-container {
+      position: relative;
+      width: 80%;
+      max-width: 800px;  /* Limita el tamaño máximo */
+      margin: 10px auto;
+      padding-bottom: 56.25%; /* 16:9 Aspect Ratio (9/16 = 0.5625 = 56.25%) */
+      height: 0;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
     }
 
     /* Estilos para las imágenes */
@@ -48,12 +58,14 @@
 
   <h2></h2>
   
-  <!-- Video primero y más proporcionado -->
-  <iframe src="https://www.youtube.com/embed/1psmT_hpQ_w?rel=0&modestbranding=1" 
-          frameborder="0" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-          allowfullscreen>
-  </iframe>
+  <!-- Video primero con proporción 16:9 -->
+  <div class="video-container">
+    <iframe src="https://www.youtube.com/embed/1psmT_hpQ_w?rel=0&modestbranding=1" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+    </iframe>
+  </div>
 
   <h2></h2>
 
