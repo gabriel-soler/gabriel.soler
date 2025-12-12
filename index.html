@@ -18,17 +18,43 @@
       margin-bottom: 0; 
     }
 
-    img { 
-      max-width: 300px; 
-      margin: 10px; 
-      border-radius: 10px; 
-      transition: transform 0.3s ease;
+    /* Estilos del contenedor del carrusel */
+    .carousel-container {
+      width: 80%; /* Ajusta el tamaño del contenedor */
+      overflow: hidden;
+      margin: 0 auto;
+      position: relative;
     }
 
-    img:hover {
-      transform: scale(1.3);
+    /* Estilo para el carrusel (las imágenes dentro del contenedor) */
+    .carousel {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
     }
 
+    .carousel img {
+      max-width: 100%;
+      margin: 10px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    /* Estilos de los botones (si los añades) */
+    .prev, .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      padding: 15px;
+      cursor: pointer;
+    }
+
+    .prev { left: 10px; }
+    .next { right: 10px; }
+
+    /* Estilos de los logos */
     .logos {
       margin-top: 40px;
     }
@@ -39,12 +65,12 @@
     }
 
     .logos img {
-      max-width: 150px; /* Ajusta el tamaño de los logos */
+      max-width: 150px;
       transition: transform 0.3s ease;
     }
 
     .logos img:hover {
-      transform: scale(1.1); /* Efecto de agrandado cuando se pasa el ratón */
+      transform: scale(1.1);
     }
   </style>
 </head>
@@ -62,10 +88,20 @@
 
   <h2></h2>
 
-  <img src="Gabriel1.jpg" alt="Foto 1">
-  <img src="K1B07912.jpg" alt="Foto 2">
-  <img src="K1B07932.jpg" alt="Foto 3">
-  <img src="K1B07981.jpg" alt="Foto 4">
+  <!-- Carrusel de imágenes -->
+  <div class="carousel-container">
+    <div class="carousel">
+      <img src="Gabriel1.jpg" alt="Foto 1">
+      <img src="K1B07912.jpg" alt="Foto 2">
+      <img src="K1B07932.jpg" alt="Foto 3">
+      <img src="K1B07981.jpg" alt="Foto 4">
+      <img src="Gabriel2.jpg" alt="Foto 5">
+      <img src="K1B07930.jpg" alt="Foto 4">
+      <img src="CLG05270.jpg" alt="Foto 5">
+      <img src="CLG05279.jpg" alt="Foto 5">
+      <!-- Añade más imágenes aquí según lo necesites -->
+    </div>
+  </div>
 
   <h2></h2>
 
@@ -78,5 +114,22 @@
       <img src="et-logo-2025.jpg" alt="eTalenta Logo">
     </a>
   </div>
+
+  <script>
+    // Carrusel de imágenes
+    let index = 0;
+    const images = document.querySelectorAll('.carousel img');
+    const totalImages = images.length;
+
+    // Función para mover el carrusel
+    function moveCarousel() {
+      const carousel = document.querySelector('.carousel');
+      index = (index + 1) % totalImages; // Ciclo a través de las imágenes
+      carousel.style.transform = `translateX(-${index * 100}%)`; // Desplaza las imágenes
+    }
+
+    // Mueve el carrusel cada 3 segundos
+    setInterval(moveCarousel, 3000);
+  </script>
 </body>
 </html>
