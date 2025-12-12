@@ -34,12 +34,13 @@
 
     .carousel img {
       max-width: 100%;
+      max-height: 300px; /* Limita la altura para que las imágenes sean más pequeñas */
       margin: 10px;
       border-radius: 10px;
       object-fit: cover;
     }
 
-    /* Estilos de los botones (si los añades) */
+    /* Estilos de los botones de navegación */
     .prev, .next {
       position: absolute;
       top: 50%;
@@ -49,6 +50,7 @@
       border: none;
       padding: 15px;
       cursor: pointer;
+      z-index: 10;
     }
 
     .prev { left: 10px; }
@@ -90,17 +92,22 @@
 
   <!-- Carrusel de imágenes -->
   <div class="carousel-container">
+    <!-- Botón para mover a la izquierda -->
+    <button class="prev">&#10094;</button>
+
     <div class="carousel">
       <img src="Gabriel1.jpg" alt="Foto 1">
       <img src="K1B07912.jpg" alt="Foto 2">
       <img src="K1B07932.jpg" alt="Foto 3">
       <img src="K1B07981.jpg" alt="Foto 4">
       <img src="Gabriel2.jpg" alt="Foto 5">
-      <img src="K1B07930.jpg" alt="Foto 4">
-      <img src="CLG05270.jpg" alt="Foto 5">
-      <img src="CLG05279.jpg" alt="Foto 5">
-      <!-- Añade más imágenes aquí según lo necesites -->
+      <img src="K1B07930.jpg" alt="Foto 6">
+      <img src="CLG05270.jpg" alt="Foto 7">
+      <img src="CLG05279.jpg" alt="Foto 8">
     </div>
+
+    <!-- Botón para mover a la derecha -->
+    <button class="next">&#10095;</button>
   </div>
 
   <h2></h2>
@@ -116,20 +123,31 @@
   </div>
 
   <script>
-    // Carrusel de imágenes
-    let index = 0;
+    // Obtener los botones y el carrusel
+    const prevButton = document.querySelector('.prev');
+    const nextButton = document.querySelector('.next');
+    const carousel = document.querySelector('.carousel');
     const images = document.querySelectorAll('.carousel img');
     const totalImages = images.length;
 
+    let index = 0;
+
     // Función para mover el carrusel
     function moveCarousel() {
-      const carousel = document.querySelector('.carousel');
-      index = (index + 1) % totalImages; // Ciclo a través de las imágenes
-      carousel.style.transform = `translateX(-${index * 100}%)`; // Desplaza las imágenes
+      carousel.style.transform = `translateX(-${index * 100}%)`; // Mueve el carrusel según el índice
     }
 
-    // Mueve el carrusel cada 3 segundos
-    setInterval(moveCarousel, 3000);
+    // Función para mover a la izquierda
+    prevButton.addEventListener('click', function() {
+      index = (index === 0) ? totalImages - 1 : index - 1;
+      moveCarousel();
+    });
+
+    // Función para mover a la derecha
+    nextButton.addEventListener('click', function() {
+      index = (index + 1) % totalImages; // Ciclo a través de las imágenes
+      moveCarousel();
+    });
   </script>
 </body>
 </html>
