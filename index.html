@@ -18,30 +18,28 @@
       margin-bottom: 0; 
     }
 
-    /* Estilos del contenedor del carrusel */
+    /* CARRUSEL */
     .carousel-container {
-      width: 80%; /* Ajusta el tamaño del contenedor */
+      width: 80%;
       overflow: hidden;
       margin: 0 auto;
       position: relative;
     }
 
-    /* Estilo para el carrusel (las imágenes dentro del contenedor) */
     .carousel {
       display: flex;
       transition: transform 0.5s ease-in-out;
     }
 
     .carousel img {
-      max-width: 100%;
-      max-height: 300px; /* Limita la altura para que las imágenes sean más pequeñas */
+      width: 300px;
+      height: auto;
       margin: 10px;
       border-radius: 10px;
-      object-fit: cover;
-      cursor: pointer; /* Indica que la imagen es clickeable */
+      cursor: pointer;
     }
 
-    /* Estilos de los botones de navegación */
+    /* Flechas del carrusel */
     .prev, .next {
       position: absolute;
       top: 50%;
@@ -52,172 +50,164 @@
       padding: 15px;
       cursor: pointer;
       z-index: 10;
+      font-size: 25px;
     }
 
-    .prev { left: 10px; }
-    .next { right: 10px; }
+    .prev { left: 5px; }
+    .next { right: 5px; }
 
-    /* Estilos del modal para imagen grande */
+    /* MODAL */
     .modal {
-      display: none; /* Ocultar el modal por defecto */
+      display: none;
       position: fixed;
-      z-index: 1;
+      z-index: 50;
       left: 0;
       top: 0;
       width: 100%;
       height: 100%;
-      overflow: auto;
-      background-color: rgba(0, 0, 0, 0.9); /* Fondo oscuro */
-      padding-top: 50px;
+      background-color: rgba(0, 0, 0, 0.9);
     }
 
     .modal img {
-      margin: auto;
       display: block;
       max-width: 80%;
       max-height: 80%;
+      margin: 80px auto;
+      border-radius: 10px;
     }
 
-    /* Estilos para cerrar el modal */
     .close {
       position: absolute;
-      top: 15px;
-      right: 35px;
-      color: #f1f1f1;
+      top: 20px;
+      right: 40px;
+      color: white;
       font-size: 40px;
-      font-weight: bold;
       cursor: pointer;
     }
 
-    .close:hover,
-    .close:focus {
-      color: #bbb;
-      text-decoration: none;
+    /* Flechas dentro del modal */
+    .modal-prev, .modal-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: white;
+      font-size: 50px;
       cursor: pointer;
+      user-select: none;
     }
 
-    /* Estilos de los logos */
-    .logos {
-      margin-top: 40px;
-    }
+    .modal-prev { left: 30px; }
+    .modal-next { right: 30px; }
 
-    .logos a {
-      margin: 10px;
-      display: inline-block;
-    }
-
+    /* Logos */
     .logos img {
       max-width: 150px;
-      transition: transform 0.3s ease;
+      margin: 20px;
+      transition: 0.3s;
     }
 
-    .logos img:hover {
-      transform: scale(1.1);
-    }
+    .logos img:hover { transform: scale(1.1); }
+
   </style>
 </head>
 <body>
-  <h1>GABRIEL SOLER</h1>
 
-  <h2></h2>
+<h1>GABRIEL SOLER</h1>
 
-  <iframe width="800" height="450" 
-          src="https://www.youtube.com/embed/1psmT_hpQ_w?rel=0&modestbranding=1" 
-          frameborder="0" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-          allowfullscreen>
-  </iframe>
+<iframe width="800" height="450" 
+        src="https://www.youtube.com/embed/1psmT_hpQ_w?rel=0&modestbranding=1"
+        frameborder="0" allowfullscreen></iframe>
 
-  <h2></h2>
+<!-- CARRUSEL -->
+<div class="carousel-container">
+  <button class="prev">&#10094;</button>
 
-  <!-- Carrusel de imágenes -->
-  <div class="carousel-container">
-    <!-- Botón para mover a la izquierda -->
-    <button class="prev">&#10094;</button>
-
-    <div class="carousel">
-      <img src="Gabriel1.jpg" alt="Foto 1">
-      <img src="K1B07912.jpg" alt="Foto 2">
-      <img src="K1B07932.jpg" alt="Foto 3">
-      <img src="K1B07981.jpg" alt="Foto 4">
-      <img src="Gabriel2.jpg" alt="Foto 5">
-      <img src="K1B07930.jpg" alt="Foto 6">
-      <img src="CLG05270.jpg" alt="Foto 7">
-      <img src="CLG05279.jpg" alt="Foto 8">
-    </div>
-
-    <!-- Botón para mover a la derecha -->
-    <button class="next">&#10095;</button>
+  <div class="carousel">
+    <img src="Gabriel1.jpg">
+    <img src="K1B07912.jpg">
+    <img src="K1B07932.jpg">
+    <img src="K1B07981.jpg">
+    <img src="Gabriel2.jpg">
+    <img src="K1B07930.jpg">
+    <img src="CLG05270.jpg">
+    <img src="CLG05279.jpg">
   </div>
 
-  <h2></h2>
+  <button class="next">&#10095;</button>
+</div>
 
-  <!-- Logos con enlaces de IMDb y eTalenta -->
-  <div class="logos">
-    <a href="https://www.imdb.com/es-es/name/nm7478315/" target="_blank">
-      <img src="images.jpg" alt="IMDb Logo">
-    </a>
-    <a href="https://www.etalenta.eu/members/profile/gabriel-soler" target="_blank">
-      <img src="et-logo-2025.jpg" alt="eTalenta Logo">
-    </a>
-  </div>
+<!-- LOGOS -->
+<div class="logos">
+  <a href="https://www.imdb.com/es-es/name/nm7478315/" target="_blank">
+    <img src="images.jpg">
+  </a>
+  <a href="https://www.etalenta.eu/members/profile/gabriel-soler" target="_blank">
+    <img src="et-logo-2025.jpg">
+  </a>
+</div>
 
-  <!-- Modal para imagen grande -->
-  <div id="myModal" class="modal">
-    <span class="close">&times;</span>
-    <img class="modal-content" id="img01">
-  </div>
+<!-- MODAL -->
+<div id="myModal" class="modal">
+  <span class="close">&times;</span>
+  <span class="modal-prev">&#10094;</span>
+  <img id="modalImg">
+  <span class="modal-next">&#10095;</span>
+</div>
 
-  <script>
-    // Obtener los elementos del carrusel y el modal
-    const images = document.querySelectorAll('.carousel img');
-    const modal = document.getElementById("myModal");
-    const modalImg = document.getElementById("img01");
-    const closeBtn = document.getElementsByClassName("close")[0];
+<script>
+  const carousel = document.querySelector('.carousel');
+  const imgs = document.querySelectorAll('.carousel img');
+  const total = imgs.length;
 
-    // Función para abrir el modal con la imagen clickeada
-    images.forEach(image => {
-      image.addEventListener('click', function() {
-        modal.style.display = "block"; // Muestra el modal
-        modalImg.src = this.src; // Establece la imagen grande
-      });
+  let index = 0;
+
+  function updateCarousel() {
+    carousel.style.transform = `translateX(${-index * 320}px)`;
+  }
+
+  document.querySelector('.next').onclick = () => {
+    index = (index + 1) % total;
+    updateCarousel();
+  };
+
+  document.querySelector('.prev').onclick = () => {
+    index = (index - 1 + total) % total;
+    updateCarousel();
+  };
+
+  /* MODAL */
+  const modal = document.getElementById('myModal');
+  const modalImg = document.getElementById('modalImg');
+  const closeModal = document.querySelector('.close');
+  const modalPrev = document.querySelector('.modal-prev');
+  const modalNext = document.querySelector('.modal-next');
+
+  let modalIndex = 0;
+
+  imgs.forEach((img, i) => {
+    img.addEventListener('click', () => {
+      modal.style.display = "block";
+      modalImg.src = img.src;
+      modalIndex = i;
     });
+  });
 
-    // Cerrar el modal cuando se hace clic en el botón de cerrar
-    closeBtn.addEventListener('click', function() {
-      modal.style.display = "none";
-    });
+  closeModal.onclick = () => modal.style.display = "none";
 
-    // Cerrar el modal si se hace clic fuera de la imagen
-    window.addEventListener('click', function(event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
-    });
+  modalPrev.onclick = () => {
+    modalIndex = (modalIndex - 1 + total) % total;
+    modalImg.src = imgs[modalIndex].src;
+  };
 
-    // Funcionalidad de los botones prev y next
-    const prevButton = document.querySelector('.prev');
-    const nextButton = document.querySelector('.next');
-    const carousel = document.querySelector('.carousel');
-    const totalImages = images.length;
-    let index = 0;
+  modalNext.onclick = () => {
+    modalIndex = (modalIndex + 1) % total;
+    modalImg.src = imgs[modalIndex].src;
+  };
 
-    // Función para mover el carrusel
-    function moveCarousel() {
-      carousel.style.transform = `translateX(-${index * 100}%)`; // Mueve el carrusel según el índice
-    }
+  modal.onclick = (e) => {
+    if (e.target === modal) modal.style.display = "none";
+  };
+</script>
 
-    // Función para mover a la izquierda
-    prevButton.addEventListener('click', function() {
-      index = (index === 0) ? totalImages - 1 : index - 1;
-      moveCarousel();
-    });
-
-    // Función para mover a la derecha
-    nextButton.addEventListener('click', function() {
-      index = (index + 1) % totalImages; // Ciclo a través de las imágenes
-      moveCarousel();
-    });
-  </script>
 </body>
 </html>
