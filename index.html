@@ -1,3 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gabriel Soler Actor</title>
+  <style>
+    body { 
+      font-family: Arial, sans-serif; 
+      text-align: center; 
+      margin: 20px; 
+    }
+
+    h1 { 
+      color: #333; 
+      font-size: 60px; 
+      font-weight: 300; 
+      margin-bottom: 0; 
+    }
+
+    /* CARRUSEL */
+    .carousel-container {
+      width: 80%;
+      overflow: hidden;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .carousel {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel img {
+      width: 300px;
+      height: auto;
+      margin: 10px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    /* Flechas del carrusel */
+    .prev, .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      padding: 15px;
+      cursor: pointer;
+      z-index: 10;
+      font-size: 25px;
+    }
+
+    .prev { left: 5px; }
+    .next { right: 5px; }
+
+    /* MODAL */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 50;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+    }
+
+    .modal img {
+      display: block;
+      max-width: 80%;
+      max-height: 80%;
+      margin: 80px auto;
+      border-radius: 10px;
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 40px;
+      color: white;
+      font-size: 40px;
+      cursor: pointer;
+    }
+
+    /* Flechas dentro del modal */
+    .modal-prev, .modal-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: white;
+      font-size: 50px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .modal-prev { left: 30px; }
+    .modal-next { right: 30px; }
+
+    /* Logos */
+    .logos img {
+      max-width: 150px;
+      margin: 20px;
+      transition: 0.3s;
+    }
+
+    .logos img:hover { transform: scale(1.1); }
+
+  </style>
+</head>
+<body>
+
+<h1>GABRIEL SOLER</h1>
+
+<iframe width="800" height="450" 
+        src="https://www.youtube.com/embed/1psmT_hpQ_w?rel=0&modestbranding=1"
+        frameborder="0" allowfullscreen></iframe>
+
+<!-- CARRUSEL -->
+<div class="carousel-container">
+  <button class="prev">&#10094;</button>
+
+  <div class="carousel">
+    <img src="Gabriel1.jpg">
+    <img src="K1B07912.jpg">
+    <img src="K1B07932.jpg">
+    <img src="K1B07981.jpg">
+    <img src="Gabriel2.jpg">
+    <img src="K1B07930.jpg">
+    <img src="CLG05270.jpg">
+    <img src="CLG05279.jpg">
+  </div>
+
+  <button class="next">&#10095;</button>
+</div>
+
+<!-- LOGOS -->
+<div class="logos">
+  <a href="https://www.imdb.com/es-es/name/nm7478315/" target="_blank">
+    <img src="images.jpg">
+  </a>
+  <a href="https://www.etalenta.eu/members/profile/gabriel-soler" target="_blank">
+    <img src="et-logo-2025.jpg">
+  </a>
+</div>
+
+<!-- MODAL -->
+<div id="myModal" class="modal">
+  <span class="close">&times;</span>
+  <span class="modal-prev">&#10094;</span>
+  <img id="modalImg">
+  <span class="modal-next">&#10095;</span>
+</div>
+
 <script>
   const carousel = document.querySelector('.carousel');
   const imgs = document.querySelectorAll('.carousel img');
@@ -9,20 +165,14 @@
     carousel.style.transform = `translateX(${-index * 320}px)`;
   }
 
-  // FLECHA DERECHA — avanzar solo si no estamos al final
   document.querySelector('.next').onclick = () => {
-    if (index < total - 1) {
-      index++;
-      updateCarousel();
-    }
+    index = (index + 1) % total;
+    updateCarousel();
   };
 
-  // FLECHA IZQUIERDA — retroceder solo si no estamos al principio
   document.querySelector('.prev').onclick = () => {
-    if (index > 0) {
-      index--;
-      updateCarousel();
-    }
+    index = (index - 1 + total) % total;
+    updateCarousel();
   };
 
   /* MODAL */
@@ -58,3 +208,6 @@
     if (e.target === modal) modal.style.display = "none";
   };
 </script>
+
+</body>
+</html>
