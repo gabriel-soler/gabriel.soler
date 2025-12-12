@@ -131,6 +131,9 @@
     <img src="K1B07930.jpg">
     <img src="CLG05270.jpg">
     <img src="CLG05279.jpg">
+    <img src="K1B07924.jpg">
+    <img src="K1B07986.jpg">
+    <img src="K1B07884.jpg">
   </div>
 
   <button class="next">&#10095;</button>
@@ -139,10 +142,10 @@
 <!-- LOGOS -->
 <div class="logos">
   <a href="https://www.imdb.com/es-es/name/nm7478315/" target="_blank">
-    <img src="images.jpg">
+    <img src="images.jpg" alt="IMDb Logo">
   </a>
   <a href="https://www.etalenta.eu/members/profile/gabriel-soler" target="_blank">
-    <img src="et-logo-2025.jpg">
+    <img src="et-logo-2025.jpg" alt="eTalenta Logo">
   </a>
 </div>
 
@@ -165,14 +168,20 @@
     carousel.style.transform = `translateX(${-index * 320}px)`;
   }
 
+  // FLECHA DERECHA — avanzar solo si no estamos al final
   document.querySelector('.next').onclick = () => {
-    index = (index + 1) % total;
-    updateCarousel();
+    if (index < total - 1) {
+      index++;
+      updateCarousel();
+    }
   };
 
+  // FLECHA IZQUIERDA — retroceder solo si no estamos al principio
   document.querySelector('.prev').onclick = () => {
-    index = (index - 1 + total) % total;
-    updateCarousel();
+    if (index > 0) {
+      index--;
+      updateCarousel();
+    }
   };
 
   /* MODAL */
