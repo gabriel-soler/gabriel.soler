@@ -15,7 +15,7 @@
     color: #333; 
     font-size: 60px; 
     font-weight: 300; 
-    margin-bottom: 30px; /* separación mayor con el video */
+    margin-bottom: 30px; 
   }
 
   /* CARRUSEL */
@@ -165,27 +165,24 @@
   let index = 0;
 
   function updateCarousel() {
-    const containerWidth = container.offsetWidth;
     const imgWidth = imgs[0].offsetWidth + 20; // ancho + margen
-    const maxTranslate = Math.max(0, total * imgWidth - containerWidth);
     let translate = index * imgWidth;
-    if (translate > maxTranslate) translate = maxTranslate;
+    const containerWidth = container.offsetWidth;
+    const maxTranslate = Math.max(0, total * imgWidth - containerWidth);
+    if (translate > maxTranslate) translate = maxTranslate; // no pasarse del final visible
     carousel.style.transform = `translateX(${-translate}px)`;
   }
 
   window.addEventListener('resize', updateCarousel);
 
+  // Navegación circular del carrusel
   document.querySelector('.next').onclick = () => {
-    const imgWidth = imgs[0].offsetWidth + 20;
-    const containerWidth = container.offsetWidth;
-    const maxTranslate = Math.max(0, total * imgWidth - containerWidth);
-    let translate = (index + 1) * imgWidth;
-    if(translate <= maxTranslate) index++;
+    index = (index + 1) % total;
     updateCarousel();
   };
 
   document.querySelector('.prev').onclick = () => {
-    if(index > 0) index--;
+    index = (index - 1 + total) % total;
     updateCarousel();
   };
 
