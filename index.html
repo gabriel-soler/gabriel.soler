@@ -18,11 +18,28 @@
     margin-bottom: 30px; 
   }
 
+  /* VIDEO RESPONSIVO */
+  .video-container {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 */
+    margin-bottom: 30px;
+  }
+
+  .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
   /* CARRUSEL */
   .carousel-container {
-    width: 80%;
+    width: 100%;
+    max-width: 900px;
     overflow: hidden;
-    margin: 0 auto;
+    margin: 0 auto 30px;
     position: relative;
   }
 
@@ -51,6 +68,7 @@
     cursor: pointer;
     z-index: 10;
     font-size: 25px;
+    border-radius: 50%;
   }
 
   .prev { left: 5px; }
@@ -98,7 +116,7 @@
   .modal-prev { left: 30px; }
   .modal-next { right: 30px; }
 
-  /* Logos */
+  /* LOGOS */
   .logos img {
     max-width: 150px;
     margin: 20px;
@@ -107,20 +125,38 @@
 
   .logos img:hover { transform: scale(1.1); }
 
+  /* MEDIA QUERIES PARA MÓVILES */
+  @media (max-width: 768px) {
+    .carousel img { width: 200px; margin: 5px; }
+    h1 { font-size: 40px; }
+    .logos img { max-width: 100px; margin: 10px; }
+    .prev, .next { padding: 12px; font-size: 20px; }
+  }
+
+  @media (max-width: 480px) {
+    .carousel img { width: 150px; margin: 5px; }
+    h1 { font-size: 30px; }
+    .logos img { max-width: 80px; margin: 5px; }
+    .prev, .next { padding: 10px; font-size: 18px; }
+    .modal img { max-width: 95%; max-height: 70%; margin: 50px auto; }
+    .modal-prev, .modal-next { font-size: 35px; }
+    .close { font-size: 30px; }
+  }
 </style>
 </head>
 <body>
 
 <h1>GABRIEL SOLER</h1>
 
-<iframe width="800" height="450" 
-        src="https://www.youtube.com/embed/1psmT_hpQ_w?rel=0&modestbranding=1&iv_load_policy=3&controls=1"
-        frameborder="0" allowfullscreen></iframe>
+<!-- VIDEO RESPONSIVO -->
+<div class="video-container">
+  <iframe src="https://www.youtube.com/embed/1psmT_hpQ_w?rel=0&modestbranding=1&iv_load_policy=3&controls=1" 
+          frameborder="0" allowfullscreen></iframe>
+</div>
 
 <!-- CARRUSEL -->
 <div class="carousel-container">
   <button class="prev">&#10094;</button>
-
   <div class="carousel">
     <img src="Gabriel1.jpg">
     <img src="K1B07912.jpg">
@@ -134,7 +170,6 @@
     <img src="K1B07986.jpg">
     <img src="K1B07884.jpg">
   </div>
-
   <button class="next">&#10095;</button>
 </div>
 
@@ -157,6 +192,7 @@
 </div>
 
 <script>
+  // CARRUSEL
   const carousel = document.querySelector('.carousel');
   const container = document.querySelector('.carousel-container');
   const imgs = document.querySelectorAll('.carousel img');
@@ -169,13 +205,12 @@
     let translate = index * imgWidth;
     const containerWidth = container.offsetWidth;
     const maxTranslate = Math.max(0, total * imgWidth - containerWidth);
-    if (translate > maxTranslate) translate = maxTranslate; // no pasarse del final visible
+    if (translate > maxTranslate) translate = maxTranslate;
     carousel.style.transform = `translateX(${-translate}px)`;
   }
 
   window.addEventListener('resize', updateCarousel);
 
-  // Navegación circular del carrusel
   document.querySelector('.next').onclick = () => {
     index = (index + 1) % total;
     updateCarousel();
@@ -186,7 +221,7 @@
     updateCarousel();
   };
 
-  /* MODAL */
+  // MODAL
   const modal = document.getElementById('myModal');
   const modalImg = document.getElementById('modalImg');
   const closeModal = document.querySelector('.close');
